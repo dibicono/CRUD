@@ -13,28 +13,38 @@
 <form class="bg-success p-3 text-white bg-gradient">
     <div class="input-group">
         <span class="input-group-text mb-2">NOMBRE / APELLIDO</span>
-        <input type="text" aria-label="NOMBRE" class="form-control mb-2" placeholder="NOMBRE">
-        <input type="text" aria-label="APELLIDO" class="form-control mb-2" placeholder="APELLIDO">
+        <input type="text" aria-label="NOMBRE" class="form-control mb-2" placeholder="NOMBRE" id="NOMBRE">
+        <input type="text" aria-label="APELLIDO" class="form-control mb-2" placeholder="APELLIDO" id="APELLIDO">
     </div>  
     <div class="input-group mb-2">
         <span class="input-group-text" id="basic-addon1">TELEFONO</span>
-        <input type="text" class="form-control" placeholder="CELULAR" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="CELULAR" aria-label="Username" aria-describedby="basic-addon1" id="CELULAR">
     </div>
     <div class="input-group mb-2">
         <span class="input-group-text">OCUPACION / OBSERVACIONES</span>
-        <textarea class="form-control" placeholder="ANOTACIONES" aria-label="With textarea"></textarea>
+        <textarea class="form-control" placeholder="ANOTACIONES" aria-label="With textarea" id="ANOTACIONES"></textarea>
     </div>  
     <div class="row justify-content-end">
-        <button type="button" class="btn btn-primary col-2 me-md-3">INGRESAR</button>
+        <button type="button" class="btn btn-primary col-2 me-md-3" id="btnINGRESAR">INGRESAR</button>
     </div>    
 </form>
 
 
 <div class="bg-light p-3 text-black">
+
+    <div class="card">
+        <h3 class="card-header">
+          Jorge
+        </h3>
+       <div class="card-body">
+          <h5 class="card-title">321456987</h5>
+          <p class="card-text">Trabaja en jamundi vende licuadoras y es proveedor de estufas</p>
+          <button type="button" class="btn btn-secondary col-2 me-md-3" id="btnEDITAR">EDITAR</button>
+          <button type="button" class="btn btn-danger col-2 me-md-3" id="btnBORRAR">BORRAR</button>
+        </div>
+      </div>
     
-    <button type="button" class="btn btn-secondary col-2 me-md-3">EDITAR</button>
-    <button type="button" class="btn btn-danger col-2 me-md-3">BORRAR</button>
-    <p>resultado</p></div>
+
     
 <div class="bg-info-subtle p-3 text-black">footer</div>
 <div>

@@ -1,16 +1,16 @@
 console.log("Entro index.js");
 
-let peliculas = JSON.parse( localStorage.getItem("peliculas") ) || [];
+let contactos = JSON.parse( localStorage.getItem("contactos") ) || [];
 // Estos son las referencias a mis inputs
-const inputTitulo = document.getElementById("inputTitulo");
-const inputEstreno = document.getElementById("inputEstreno");
-const inputGenero = document.getElementById("inputGenero");
-const inputImagen = document.getElementById("inputImagen");
-const inputSinopsis = document.getElementById("inputSinopsis");
+const NOMBRE = document.getElementById("NOMBRE");
+const APELLIDO = document.getElementById("APELLIDO");
+const CELULAR = document.getElementById("CELULAR");
+const ANOTACIONES = document.getElementById("ANOTACIONES");
+
 
 // Estas son las referencias a mis botones
-const btnAgregar = document.getElementById("btnAgregar");
-const btnBorrarTodo = document.getElementById("btnBorrarTodo");
+const btnBORRAR = document.getElementById("btnBORRAR");
+const btnEDITAR = document.getElementById("btnEDITAR");
 
 const divPeliculas = document.getElementById("divPeliculas");
 const alertSinPeliculas = document.getElementById("alertSinPeliculas");
