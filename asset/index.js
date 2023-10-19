@@ -1,66 +1,124 @@
 
-let contactos = JSON.parse( localStorage.getItem("contactos") ) || [];
-// Estos son las referencias a mis inputs
-const NOMBRE = document.getElementById("NOMBRE");
-const APELLIDO = document.getElementById("APELLIDO");
-const TELEFONO = document.getElementById("TELEFONO");
-const ANOTACIONES = document.getElementById("ANOTACIONES");
+
+let Directorio = JSON.parse( localStorage.getItem("Directorio")) || [];
+
+const inputNombre = document.getElementById("Nombre");
+const inputApellido = document.getElementById("Apellido");
+const inputTelefono = document.getElementById("Telefono");
+const inputAnotaciones = document.getElementById("Anotaciones");
 
 // Estas son las referencias a mis botones
 const btnBORRAR = document.getElementById("btnBORRAR");
-const btnEDITAR = document.getElementById("btnEDITAR");
-const btnINGRESAR = document.getElementById("btnINGRESAR")
+const btnEDITAR = document.getElementById("EDITAR");
+const btnIngresar = document.getElementById("btnIngresar")
+const btnEliminar = document.getElementById("Eliminar")
 
-const divPeliculas = document.getElementById("divPeliculas");
-const alertSinPeliculas = document.getElementById("alertSinPeliculas");
+const divDirectorio = document.getElementById("divDirectorio");
+const alertSinDirectorio = document.getElementById("alertSinDirectorio");
 
 let indexEditar = null;
 
 
-class DIRECTORIO {
-    constructor(NOMBRE, APELLIDO, TELEFONO, ANOTACIONES) {
-        this.NOMBRE = NOMBRE;
-        this.APELLIDO = APELLIDO;
-        this.TELEFONO = TELEFONO;
-        this.ANOTACIONES = ANOTACIONES;
+class ContactoObjeto {
+    constructor(Nombre, Apellido, Telefono, Anotaciones) {
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Telefono = Telefono;
+        this.Anotaciones = Anotaciones;
     }
 }
-
 function guardarContacto() {
-    let NOMBRE = NOMBRE.value;
-    let APELLIDO = APELLIDO.value;
-    let TELEFONO = TELEFONO.value;
-    let ANOTACIONES = ANOTACIONES.value;
+    let Nombre = inputNombre.value;
+    let Apellido = inputApellido.value;
+    let Telefono = inputTelefono.value;
+    let Anotaciones = inputAnotaciones.value;
 
-    let guardarContacto = new DIRECTORIO(
-        NOMBRE,
-        APELLIDO,
-        TELEFONO,
-        ANOTACIONES,
+    let contacto = new ContactoObjeto(
+        Nombre,
+        Apellido,
+        Telefono,
+        Anotaciones,
     );
     
-
     if (indexEditar === null) {
-        console.log("Agregar pelicula");
-        guardarContacto.push(DIRECTORIO);
+        console.log("Agregar CONTACTO");
+        Directorio.push(contacto);
     } else {
-        console.log("Editar pelicula");
+        Directorio[indexEditar] = contacto;
+        indexEditar = null;
+        console.log("Editar CONTACTO");
     }
-    console.log("Entro funcion guardar pelicula");
-    mostrarPeliculas();
+    LimpiarFormularioDirectorio();
+    localStorage.setItem("Directorio", JSON.stringify(Directorio))
+    console.log("Entro funcion guardar CONTACTO");
+    mostrarDirectorio();
 }
 
-function borrarTodo() {
-    console.log("Entro a brorar todo");
-    mostrarPeliculas();
+function borrarTodo(){
+    localStorage.clear();
+    Directorio = [];
+    mostrarDirectorio();
+    alert("se elimino directorio");
 }
 
-function mostrarDIRETORIO() {
-    console.log("Deberia mostrar peliculas....");
+function editarContacto(index){
+    let ContactoAEditar = Directorio[index];
+    inputNombre.value = ContactoAEditar.Nombre;
+    inputApellido.value = ContactoAEditar.Apellido;
+    inputTelefono.value = ContactoAEditar.Telefono;
+    inputAnotaciones.value = ContactoAEditar.Anotaciones;
+    indexEditar = index;
+
+
 }
 
+function borrarContacto(index) {
+    console.log(`Entro a borrar todo ${index}`);
+    Directorio.splice(index, 1);
+    localStorage.setItem("Directorio",JSON.stringify(Directorio));
+    mostrarDirectorio();
+}
 
-btnINGRESAR.addEventListener("click", guardarContacto);
+function mostrarDirectorio() {
+   
+    if(Directorio.lenght === 0){
+        divDirectorio.innerHTML = `
+        <div class="row">
+        no hay contactos
+        </div>`;
+        }
+        else{
+            divDirectorio.innerHTML = "";
+            Directorio.forEach(({Nombre, Apellido, Telefono, Anotaciones}, index) => {
+             divDirectorio.innerHTML += `
+             <div class="bg-light p-3 text-black">
+             <div class="card">
+                 <h3 class="card-header">
+                   ${Nombre} ${Apellido}
+                 </h3>
+                <div class="card-body">
+                   <h5 class="card-title">${Telefono}</h5>
+                   <p class="card-text">${Anotaciones}</p>
+                   <button type="button" class="btn btn-secondary col-2 me-md-3" id="EDITAR-${index}" onclick="editarContacto(${index})">EDITAR</button>
+                   <button type="button" class="btn btn-danger col-2 me-md-3" id="Eliminar-${index}" onclick="borrarContacto(${index})">BORRAR</button>
+                 </div>
+               </div>
+                </div>
+               `;
+            });
+        }
+    }
+
+    function LimpiarFormularioDirectorio (){
+        inputNombre.value = "";
+        inputApellido.value = "";
+        inputTelefono.value = "";
+        inputAnotaciones.value = "";
+    }
+
+
+
+btnIngresar.addEventListener("click", guardarContacto);
 btnBORRAR.addEventListener("click", borrarTodo);
 
-mostrarPeliculas();
+mostrarDirectorio();

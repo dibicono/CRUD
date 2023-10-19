@@ -6,49 +6,37 @@
     <title>Directorio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="asset/index.js"></script>
+    <script src="asset/index.js" defer></script>
 </head>
 <div class="container">
-<div class="p-3 text-white fs-2 bg-secondary">MI DIRECTORIO</div>
+<div class="p-3 text-white fs-2 bg-secondary">MI Directorio</div>
 <form class="bg-success p-3 text-white bg-gradient">
     <div class="input-group">
-        <span class="input-group-text mb-2">NOMBRE / APELLIDO</span>
-        <input type="text" aria-label="NOMBRE" class="form-control mb-2" placeholder="NOMBRE" id="NOMBRE">
-        <input type="text" aria-label="APELLIDO" class="form-control mb-2" placeholder="APELLIDO" id="APELLIDO">
+        <span class="input-group-text mb-2">Nombre / Apellido</span>"
+        <input type="text" aria-label="Nombre" class="form-control mb-2" placeholder="Nombre" id="Nombre">
+        <input type="text" aria-label="Apellido" class="form-control mb-2" placeholder="Apellido" id="Apellido">
+        
     </div>  
     <div class="input-group mb-2">
-        <span class="input-group-text">TELEFONO</span>
-        <input type="text" class="form-control" placeholder="CELULAR" aria-label="Username" aria-describedby="basic-addon1" id="TELEFONO">
+        <span class="input-group-text">Telefono</span>
+        <input type="text" class="form-control" placeholder="CELULAR" aria-label="Username" aria-describedby="basic-addon1" id="Telefono">
     </div>
     <div class="input-group mb-2">
         <span class="input-group-text">OCUPACION / OBSERVACIONES</span>
-        <textarea class="form-control" placeholder="ANOTACIONES" aria-label="With textarea" id="ANOTACIONES"></textarea>
+        <textarea class="form-control" placeholder="Anotaciones" aria-label="With textarea" id="Anotaciones"></textarea>
     </div>  
     <div class="row justify-content-end">
-        <button type="button" class="btn btn-primary col-2 me-md-3" id="btnINGRESAR">INGRESAR</button>
-    </div>    
+        <button type="button" class="btn btn-primary col-2 me-md-3" id="btnIngresar" onclick="guardarContacto">INGRESAR</button>
+        <button type="button" class="btn btn-primary col-2 me-md-3" id="btnBORRAR" onclick="borrarTodo">BORRAR DIRECTORIO</button>
+    </div>
+    <div id="divDirectorio">
+
+    </div>
 </form>
 
-
-<div class="bg-light p-3 text-black">
-
-    <div class="card">
-        <h3 class="card-header">
-          Jorge
-        </h3>
-       <div class="card-body">
-          <h5 class="card-title">321456987</h5>
-          <p class="card-text">Trabaja en jamundi vende licuadoras y es proveedor de estufas</p>
-          <button type="button" class="btn btn-secondary col-2 me-md-3" id="btnEDITAR">EDITAR</button>
-          <button type="button" class="btn btn-danger col-2 me-md-3" id="btnBORRAR">BORRAR</button>
-        </div>
-      </div>
-    
+<footer class="bg-info-subtle p-3 text-black">footer</footer>
+   
 
     
-<div class="bg-info-subtle p-3 text-black">footer</div>
-<div>
-</div> 
-</div>
 </body>
 </html>
